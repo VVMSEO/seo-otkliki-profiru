@@ -1,0 +1,36 @@
+{
+  "entities": {
+    "Chat": {
+      "title": "Chat",
+      "description": "A chat session containing SEO response generation history.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "ID of the user who owns the chat."
+        },
+        "messages": {
+          "type": "array",
+          "description": "List of messages in the chat."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "messages", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/chats/{chatId}": {
+      "schema": {
+        "$ref": "#/entities/Chat"
+      },
+      "description": "User chats, secured by userId."
+    }
+  }
+}
